@@ -1,0 +1,21 @@
+# Serverless framework template
+service:
+  name: serverless-clj
+
+provider:
+  name: aws
+  runtime: java8
+  timeout: 10
+
+package:
+  artifact: target/serverless.jar
+
+functions:
+  dryrun:
+    handler: serverless-clj::hello
+    memorySize: 512
+    events:
+      - http:
+          path: hello
+          method: get
+
